@@ -7,7 +7,7 @@ import {
   homeText,
 } from "./configs.js";
 
-// Load amd format API results
+// Load and format API results
 export const renderTofu = async function () {
   try {
     const api_url = `https://forkify-api.herokuapp.com/api/search?q=tofu`;
@@ -74,6 +74,8 @@ export const renderSushi = async function () {
     const data = await res.json();
     console.log(data);
     if (!res.ok) throw new Error("Problem fetching data.");
+
+    // Format API data
     const dataList = {
       image: [],
       title: [],
@@ -131,6 +133,8 @@ export const renderTacos = async function () {
     const data = await res.json();
     console.log(data);
     if (!res.ok) throw new Error("Problem fetching data.");
+
+    // Format API data
     const dataList = {
       image: [],
       title: [],
