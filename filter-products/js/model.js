@@ -1,5 +1,4 @@
-import { api_url, api_key } from "./configs.js";
-import { getJSON } from "./helper.js";
+import { renderTofu } from "./helper.js";
 
 // export const displayMeals = async function (id) {
 //   try {

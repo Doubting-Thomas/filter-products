@@ -1,71 +1,58 @@
 import {
-  api_url,
-  api_key,
   productContainer,
-  navItem,
   navHome,
+  navTofu,
+  navSushi,
+  navTacos,
   homeText,
 } from "./configs.js";
 
-export const getJSON = async function () {
+// Load amd format API results
+export const renderTofu = async function () {
   try {
+    const api_url = `https://forkify-api.herokuapp.com/api/search?q=tofu`;
     const res = await fetch(api_url);
     const data = await res.json();
     console.log(data);
+    if (!res.ok) throw new Error("Problem fetching data.");
 
-    // Format the API object
-    // let recipe = data.data.recipe;
-    // recipe = {
-    //   id: recipe.id,
-    //   title: recipe.title,
-    //   publisher: recipe.publisher,
-    //   sourceUrl: recipe.source_url,
-    //   image: recipe.image_url,
-    //   servings: recipe.servings,
-    //   cookingTime: recipe.cooking_time,
-    //   ingredients: recipe.ingredients,
-    // };
-    // console.log(recipe);
+    // Format API data
+    const dataList = {
+      image: [],
+      title: [],
+      publisher: [],
+      socialRank: [],
+    };
+    let recipe = data.recipes;
+    recipe.forEach(function (meals) {
+      dataList.image.push(meals.image_url);
+      dataList.title.push(meals.title);
+      dataList.publisher.push(meals.publisher);
+      dataList.socialRank.push(meals.social_rank);
+    });
+    console.log(dataList);
 
-    // const dataList = {
-    //   image: [],
-    //   title: [],
-    //   publisher: [],
-    //   socialRank: [],
-    // };
-    let image = [];
-    let title = [];
-    let publisher = [];
-    let socialRank = [];
-
-    let recipe = data.recipes[0];
-    // // recipe.forEach(function (meals) {
-    image.push(recipe.image_url);
-    title.push(recipe.title);
-    publisher.push(recipe.publisher);
-    socialRank.push(recipe.social_rank);
-    // // });
-    console.log(recipe);
-
-    const markup = `
+    for (const [i] of recipe.entries()) {
+      let markup;
+      markup = `
     <section class="product">
       <div class="product__details">
         <div class="product__image">
           <img
-            src="${recipe.image_url}"
+            src="${dataList.image[i]}"
             class="product__img"
-            alt="${recipe.title}"
+            alt="${dataList.title[i]}"
           />
         </div>
-
+  
         <div class="product__info">
           <h4 class="product__text">Name</h4>
-          <p class="product__servings">${recipe.title}</p>
+          <p class="product__servings">${dataList.title[i]}</p>
         </div>
-
+  
         <div class="product__info">
           <h4 class="product__text">Publisher</h4>
-          <p class="product__servings">${recipe.publisher}</p>
+          <p class="product__servings">${dataList.publisher[i]}</p>
         </div>
         <div class="product__info">
           <h4 class="product__text">Price</h4>
@@ -73,33 +60,145 @@ export const getJSON = async function () {
         </div>
       </div>
     `;
-    productContainer.insertAdjacentHTML("afterbegin", markup);
-
-    // My own data
-    // const dataList = {
-    //   image: [],
-    //   title: [],
-    //   publisher: [],
-    //   socialRank: [],
-    // };
-
-    // let recipe = data.recipes;
-    // recipe.forEach(function (meals) {
-    //   dataList.image.push(meals.image_url);
-    //   dataList.title.push(meals.title);
-    //   dataList.publisher.push(meals.publisher);
-    //   dataList.socialRank.push(meals.social_rank);
-    // });
-    // console.log(dataList);
+      productContainer.insertAdjacentHTML("afterbegin", markup);
+    }
   } catch (err) {
     throw err;
   }
 };
-// getJSON();
 
-navItem.addEventListener("click", function () {
+export const renderSushi = async function () {
+  try {
+    const api_url = `https://forkify-api.herokuapp.com/api/search?q=sushi`;
+    const res = await fetch(api_url);
+    const data = await res.json();
+    console.log(data);
+    if (!res.ok) throw new Error("Problem fetching data.");
+    const dataList = {
+      image: [],
+      title: [],
+      publisher: [],
+      socialRank: [],
+    };
+    let recipe = data.recipes;
+    recipe.forEach(function (meals) {
+      dataList.image.push(meals.image_url);
+      dataList.title.push(meals.title);
+      dataList.publisher.push(meals.publisher);
+      dataList.socialRank.push(meals.social_rank);
+    });
+    console.log(dataList);
+
+    for (const [i] of recipe.entries()) {
+      let markup;
+      markup = `
+    <section class="product">
+      <div class="product__details">
+        <div class="product__image">
+          <img
+            src="${dataList.image[i]}"
+            class="product__img"
+            alt="${dataList.title[i]}"
+          />
+        </div>
+  
+        <div class="product__info">
+          <h4 class="product__text">Name</h4>
+          <p class="product__servings">${dataList.title[i]}</p>
+        </div>
+  
+        <div class="product__info">
+          <h4 class="product__text">Publisher</h4>
+          <p class="product__servings">${dataList.publisher[i]}</p>
+        </div>
+        <div class="product__info">
+          <h4 class="product__text">Price</h4>
+          <h4 class="product__price">$30</h4>
+        </div>
+      </div>
+    `;
+      productContainer.insertAdjacentHTML("afterbegin", markup);
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const renderTacos = async function () {
+  try {
+    const api_url = `https://forkify-api.herokuapp.com/api/search?q=tacos`;
+    const res = await fetch(api_url);
+    const data = await res.json();
+    console.log(data);
+    if (!res.ok) throw new Error("Problem fetching data.");
+    const dataList = {
+      image: [],
+      title: [],
+      publisher: [],
+      socialRank: [],
+    };
+    let recipe = data.recipes;
+    recipe.forEach(function (meals) {
+      dataList.image.push(meals.image_url);
+      dataList.title.push(meals.title);
+      dataList.publisher.push(meals.publisher);
+      dataList.socialRank.push(meals.social_rank);
+    });
+    console.log(dataList);
+
+    for (const [i] of recipe.entries()) {
+      let markup;
+      markup = `
+    <section class="product">
+      <div class="product__details">
+        <div class="product__image">
+          <img
+            src="${dataList.image[i]}"
+            class="product__img"
+            alt="${dataList.title[i]}"
+          />
+        </div>
+  
+        <div class="product__info">
+          <h4 class="product__text">Name</h4>
+          <p class="product__servings">${dataList.title[i]}</p>
+        </div>
+  
+        <div class="product__info">
+          <h4 class="product__text">Publisher</h4>
+          <p class="product__servings">${dataList.publisher[i]}</p>
+        </div>
+        <div class="product__info">
+          <h4 class="product__text">Price</h4>
+          <h4 class="product__price">$30</h4>
+        </div>
+      </div>
+    `;
+      productContainer.insertAdjacentHTML("afterbegin", markup);
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
+// Hide home text when API results are rendered
+function hideText() {
   homeText.style.display = "none";
-  getJSON();
+}
+
+navTofu.addEventListener("click", function () {
+  hideText();
+  renderTofu();
+});
+
+navSushi.addEventListener("click", function () {
+  hideText();
+  renderSushi();
+});
+
+navTacos.addEventListener("click", function () {
+  hideText();
+  renderTacos();
 });
 
 navHome.addEventListener("click", function () {
