@@ -1,3 +1,10 @@
+:root {
+  --color-primary: bisque;
+  --color-secondary: #000;
+  --color-tertiary: #fff;
+  --color-tertiary-2: beige;
+}
+
 body {
   font-family: cursive;
   font-weight: 400;
@@ -5,7 +12,7 @@ body {
 
   width: 60rem;
   margin: 0 25rem;
-  background-color: bisque;
+  background-color: var(--color-primary);
 }
 
 html {
@@ -28,7 +35,7 @@ html {
 
 .nav__input {
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: var(--color-tertiary);
   color: #000;
   border-radius: 2rem;
   border: none;
@@ -46,7 +53,7 @@ html {
   padding: 1.3rem 3rem;
   border: none;
   border-radius: 2rem;
-  background-color: #000;
+  background-color: var(--color-secondary);
   margin-left: -9rem;
   transform: translateX(3rem);
 }
@@ -62,8 +69,8 @@ html {
 }
 
 .nav__item {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-secondary);
+  color: var(--color-tertiary);
   font-size: 1.5rem;
   padding: 1rem 3rem;
   border-radius: 3.5rem;
@@ -72,7 +79,7 @@ html {
 }
 
 .nav__item:hover {
-  color: bisque;
+  color: var(--color-primary);
   transform: scale(1.1);
 }
 
@@ -101,8 +108,8 @@ html {
   flex-grow: 1;
   flex-basis: 15%;
   padding: 0.5rem 1rem 1rem 1rem;
-  background-color: #000;
-  color: beige;
+  background-color: var(--color-secondary);
+  color: var(--color-tertiary-2);
 
   border-radius: 1rem;
   transition: all 0.3s;
