@@ -48,7 +48,7 @@ export const renderSearchResults = async function () {
 };
 
 // General event handlers
-const initResults = function () {
+export const initResults = function () {
   searchDisplay.addSearchHandler(renderSearchResults);
 };
 initResults();

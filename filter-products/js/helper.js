@@ -6,9 +6,9 @@ import {
   navTacos,
   homeText,
   navItems,
+  navAllRecipes,
 } from "./configs.js";
 
-import * as model from "./model.js";
 import searchDisplay from "./searchDisplay.js";
 
 // Load and format API results
@@ -212,6 +212,12 @@ navTacos.addEventListener("click", function () {
 navHome.addEventListener("click", function () {
   productContainer.textContent = "";
   homeText.style.display = "block";
+});
+
+navAllRecipes.addEventListener("click", function () {
+  renderTofu();
+  renderSushi();
+  renderSushi();
 });
 
 navItems.addEventListener("click", function () {
