@@ -1,7 +1,7 @@
 import * as model from "./model.js";
 import searchDisplay from "./searchDisplay.js";
 import hideText from "./helper.js";
-import { input } from "./configs.js";
+import { input, homeText } from "./configs.js";
 
 export const renderSearchResults = async function () {
   if (input.value === "tofu") {
@@ -40,6 +40,10 @@ export const renderSearchResults = async function () {
     } catch (err) {
       throw err;
     }
+  } else {
+    homeText.innerHTML =
+      "Sorry, this recipe is currently not available. Enjoy looking through our other meals if you may!";
+    input.value = "";
   }
 };
 
