@@ -214,10 +214,15 @@ navHome.addEventListener("click", function () {
   homeText.style.display = "block";
 });
 
-navAllRecipes.addEventListener("click", function () {
+function displayAllRecipes() {
+  hideText();
   renderTofu();
   renderSushi();
   renderSushi();
+}
+
+navAllRecipes.addEventListener("click", function () {
+  displayAllRecipes();
 });
 
 navItems.addEventListener("click", function () {
