@@ -1,44 +1,38 @@
-import { renderTofu } from "./helper.js";
+import { renderTofu, renderSushi, renderTacos } from "./helper.js";
 
-// export const displayMeals = async function (id) {
-//   try {
-//     const data = await getJSON(`${api_url}${id}?key=${api_key}`);
-//     console.log(data);
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-// displayMeals();
+// Create state object for the search functionality
+export const state = {
+  search: {
+    results: "",
+  },
+};
 
-// export const displayMeals = async function () {
-//   try {
-//     const data = await getJSON(`${api_url}?key=${api_key}`);
-//     console.log(data);
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-// displayMeals();
+export const displayTofuResults = async function (results) {
+  try {
+    state.search.results = results;
 
-// State defines the relevant data in the application
-// export const state = {
-//   recipe: {},
-// };
+    await renderTofu();
+  } catch (err) {
+    throw err;
+  }
+};
 
-// export const displayMeals = async function (id) {
-//   try {
-//     const data = await getJSON(`${api_url}${id}`);
-//     // console.log(data);
-//     let recipe = data.data.recipe;
+export const displaySushiResults = async function (results) {
+  try {
+    state.search.results = results;
 
-//     // state.recipe = {
-//     //   title: recipe.title,
-//     //   servings: recipe.servings,
-//     //   sourceUrl: recipe.source_url,
-//     // };
-//     // console.log(state.recipe);
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-// displayMeals();
+    await renderSushi();
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const displayTacosResults = async function (results) {
+  try {
+    state.search.results = results;
+
+    await renderTacos();
+  } catch (err) {
+    throw err;
+  }
+};

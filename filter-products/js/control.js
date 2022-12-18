@@ -1,24 +1,50 @@
 import * as model from "./model.js";
-console.log("module");
+import searchDisplay from "./searchDisplay.js";
+import hideText from "./helper.js";
+import { input } from "./configs.js";
 
-// export const getJSON = async function () {
-//   try {
-//     const res = await fetch(
-//       "https://forkify-api.herokuapp.com/api/search?q=asparagus"
-//     );
-//     const data = await res.json();
-//     console.log(res, data);
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-// getJSON();
+export const renderSearchResults = async function () {
+  if (input.value === "tofu") {
+    try {
+      // Get the search results
+      const results = searchDisplay.getResults();
+      if (!results) return;
 
-const renderMeals = async function () {
-  try {
-    const id = window.location.hash.slice(1);
-    console.log(id);
-  } catch (err) {
-    throw err;
+      await model.displayTofuResults(results);
+      hideText();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  if (input.value === "sushi") {
+    model.displayTofuResults = "";
+    try {
+      const results = searchDisplay.getResults();
+      if (!results) return;
+
+      await model.displaySushiResults(results);
+      hideText();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  if (input.value === "tacos") {
+    try {
+      const results = searchDisplay.getResults();
+      if (!results) return;
+
+      await model.displayTacosResults(results);
+      hideText();
+    } catch (err) {
+      throw err;
+    }
   }
 };
+
+// General event handlers
+const initResults = function () {
+  searchDisplay.addSearchHandler(renderSearchResults);
+};
+initResults();

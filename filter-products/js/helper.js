@@ -5,7 +5,11 @@ import {
   navSushi,
   navTacos,
   homeText,
+  navItems,
 } from "./configs.js";
+
+import * as model from "./model.js";
+import searchDisplay from "./searchDisplay.js";
 
 // Load and format API results
 export const renderTofu = async function () {
@@ -186,7 +190,7 @@ export const renderTacos = async function () {
 };
 
 // Hide home text when API results are rendered
-function hideText() {
+export default function hideText() {
   homeText.style.display = "none";
 }
 
@@ -208,4 +212,8 @@ navTacos.addEventListener("click", function () {
 navHome.addEventListener("click", function () {
   productContainer.textContent = "";
   homeText.style.display = "block";
+});
+
+navItems.addEventListener("click", function () {
+  searchDisplay._resetInput();
 });
