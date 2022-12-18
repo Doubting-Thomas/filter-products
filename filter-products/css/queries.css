@@ -1,0 +1,11 @@
+@media (min-width: 56.25em) {
+  body {
+    max-width: 90rem;
+  }
+}
+
+@media (min-width: 75em) {
+  body {
+    max-width: 120rem;
+  }
+}
