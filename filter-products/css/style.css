@@ -1,8 +1,8 @@
 :root {
-  --color-primary: bisque;
+  --color-primary: #d4a373;
   --color-secondary: #000;
   --color-tertiary: #fff;
-  --color-tertiary-2: beige;
+  --color-tertiary-2: #fefae0;
 }
 
 body {
